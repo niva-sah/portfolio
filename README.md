@@ -6,6 +6,7 @@ This is my personal portfolio website built using Django.
 - Skills section
 - Projects showcase
 - Contact form
+- Experience
 
   ## 🛠️ Technologies Used
 - Python
