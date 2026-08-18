@@ -23,15 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nit+wu9$uyz)6_q=w0)7o_%7fu#alho-95gudtjxep2_kqsiy2'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'niva.pythonanywhere.com',  
-    '.pythonanywhere.com',     
-    '127.0.0.1',               
+    'niva-8crx.onrender.com',
+    '127.0.0.1',
+    'localhost',
 ]
 
 
@@ -126,9 +126,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'app' / 'static',
 ]
-
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
