@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -7,9 +6,6 @@ from django.core.mail import EmailMessage
 from .models import Banner, SocialLink, Stat, NavigationItem
 from .models import About, Skill, Interest, Education, Project
 from .forms import ContactForm
-
-
-
 
 
 def index(request):
@@ -50,20 +46,26 @@ Message:
 """,
 
                 from_email=settings.DEFAULT_FROM_EMAIL,
-
                 to=[settings.CONTACT_EMAIL],
 
                 # User's email will be used when you click Reply
                 reply_to=[contact.email],
             )
 
-            email.send(fail_silently=False)
+            # Try to send email
+            try:
+                email.send(fail_silently=False)
 
-            # Success message
-            messages.success(
-                request,
-                "Message sent successfully!"
-            )
+                messages.success(
+                    request,
+                    "Message sent successfully!"
+                )
+
+            except Exception:
+                messages.error(
+                    request,
+                    "Your message was received, but email notification could not be sent."
+                )
 
             # Redirect after POST
             return redirect('index')
