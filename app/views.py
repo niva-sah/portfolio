@@ -61,7 +61,9 @@ Message:
                     "Message sent successfully!"
                 )
 
-            except Exception:
+            except Exception as e:
+                print("EMAIL ERROR:", e)
+
                 messages.error(
                     request,
                     "Your message was received, but email notification could not be sent."
@@ -90,4 +92,3 @@ Message:
             'form': form,
         }
     )
-
