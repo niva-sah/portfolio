@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'niva-8crx.onrender.com',
+    '.onrender.com',
     '127.0.0.1',
     'localhost',
 ]
